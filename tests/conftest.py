@@ -20,3 +20,8 @@ def category_1():
 @pytest.fixture
 def product_1():
     return Product("Product_1-1", "Product__1___1", 131.25, 100)
+
+
+@pytest.fixture
+def product_2():
+    return Product("Product_2-2", "Product__2___2", 232.22, 200)

@@ -10,6 +10,23 @@ class Category:
     def __init__(self, name, description, products=None):
         self.name = name
         self.description = description
-        self.products = products if products else []
+        self.__products = products if products else []
         Category.category_count += 1
-        Category.product_count = len(self.products)
+        Category.product_count = len(self.__products)
+
+    def add_product(self, product):
+        """Метод добавления объекта класса "Товар" в приватный атрибут класса "Категория" - список товаров"""
+        self.__products.append(product)
+        Category.product_count += 1
+
+    @property
+    def products(self):
+        """Метод вывода данных, содержащихся в приватном атрибуте объекта класса "Категория" - списке товаров"""
+        products_list = []
+        for i in range(len(self.__products)):
+            products_list.append(
+                f"{self.__products[i].name}, "
+                f"{self.__products[i].price} руб. "
+                f"Остаток: {self.__products[i].quantity} шт."
+            )
+        return products_list
