@@ -10,6 +10,7 @@ class CategoryIterator:
         self.index = 0
 
     def __iter__(self):
+        self.index = 0
         return self
 
     def __next__(self):
@@ -33,6 +34,11 @@ if __name__ == "__main__":
     )
 
     iterator = CategoryIterator(category1)
+
+    for product in iterator:
+        print(product)
+
+    print("\nOne more time: \n")
 
     for product in iterator:
         print(product)
