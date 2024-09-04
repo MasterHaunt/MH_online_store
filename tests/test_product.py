@@ -40,10 +40,10 @@ def test_product_null_price_setter(capsys, product_1):
 
 
 def test_product_str(product_1):
-    """Тестирование строкового представления объекта класса 'Product' """
+    """Тестирование строкового представления объекта класса 'Product'"""
     assert str(product_1) == "Product_1-1, 131.25 руб. Остаток: 100 шт."
 
 
 def test_product_add(product_1, product_2):
-    """Тестирование магического метода сложения объектов класса 'Product' """
+    """Тестирование магического метода сложения объектов класса 'Product'"""
     assert product_1 + product_2 == 59569.0

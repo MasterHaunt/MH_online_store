@@ -1,5 +1,6 @@
 import pytest
 
+
 def test_category_init(category_1):
     """Тестирование создания объекта класса 'Category', у которого атрибут 'products' содержит список из
     трёх объектов класса 'Product'"""
@@ -16,12 +17,12 @@ def test_category_add_product(category_1, product_2):
 
 
 def test_category_str(category_1):
-    """Тестирование строкового представления объекта класса 'Category' """
+    """Тестирование строкового представления объекта класса 'Category'"""
     assert str(category_1) == "Category 1, количество продуктов: 410 шт."
 
 
 def test_iterator(category_iterator):
-    """Тестирование итератора объекта класса 'Category' """
+    """Тестирование итератора объекта класса 'Category'"""
     iter(category_iterator)
     assert category_iterator.index == 0
     assert str(next(category_iterator)) == "Product_1-1, 131.25 руб. Остаток: 100 шт."

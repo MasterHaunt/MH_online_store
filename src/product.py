@@ -27,7 +27,7 @@ class Product:
 
     def __add__(self, other):
         """Магический метод сложения для объекта класса 'Product':
-         складывается произведение количества товара на его стоимость"""
+        складывается произведение количества товара на его стоимость"""
         return (self.quantity * self.price) + (other.quantity * other.price)
 
     @classmethod
