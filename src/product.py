@@ -21,6 +21,15 @@ class Product:
             }
         )
 
+    def __str__(self):
+        """Магический метод строкового отображения для объекта класса 'Product'"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        """Магический метод сложения для объекта класса 'Product':
+        складывается произведение количества товара на его стоимость"""
+        return (self.quantity * self.price) + (other.quantity * other.price)
+
     @classmethod
     def new_product(cls, product_properties: dict):
         """Метод создания объекта класса "Товар" из словаря"""
