@@ -1,5 +1,5 @@
 class Product:
-    """ Класс товара (общий) """
+    """Класс товара (общий)"""
 
     name: str
     description: str
@@ -22,21 +22,21 @@ class Product:
         )
 
     def __str__(self):
-        """ Магический метод строкового отображения для объекта класса 'Product' """
+        """Магический метод строкового отображения для объекта класса 'Product'"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        """ Магический метод сложения для объекта класса 'Product':
+        """Магический метод сложения для объекта класса 'Product':
         складывается произведение количества товара на его стоимость.
         Если складываемые объекты не из одного класса (подкласса), инициализируется
-         исключение <TypeError> """
-        if type(self) != type(other):
+         исключение <TypeError>"""
+        if type(self) is not type(other):
             raise TypeError("Нельзя суммировать товары из разных категорий!")
         return (self.quantity * self.price) + (other.quantity * other.price)
 
     @classmethod
     def new_product(cls, product_properties: dict):
-        """ Метод создания объекта класса "Товар" из словаря """
+        """Метод создания объекта класса "Товар" из словаря"""
         for product in cls.products_list:
             if product["name"] == product_properties["name"]:
                 product_properties["quantity"] += product["quantity"]
@@ -57,12 +57,12 @@ class Product:
 
     @property
     def price(self):
-        """ Геттер для получения значения приватного атрибута - цены """
+        """Геттер для получения значения приватного атрибута - цены"""
         return self.__price
 
     @price.setter
     def price(self, new_price: float):
-        """ Сеттер для задания значения приватного атрибута - цены """
+        """Сеттер для задания значения приватного атрибута - цены"""
         if new_price <= 0.0:
             print("Цена не должна быть нулевая или отрицательная")
         elif new_price < self.__price:
@@ -74,14 +74,17 @@ class Product:
 
 
 class Smartphone(Product):
-    """ Класс товаров - 'Смартфоны' """
+    """Класс товаров - 'Смартфоны'"""
+
     efficiency: float
     model: str
     memory: int
     color: str
 
-    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
-        """ Расширение родительского метода __init__ """
+    def __init__(
+        self, name, description, price, quantity, efficiency, model, memory, color
+    ):
+        """Расширение родительского метода __init__"""
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
@@ -90,13 +93,16 @@ class Smartphone(Product):
 
 
 class LawnGrass(Product):
-    """ Класс товаров - 'Газонная трава' """
+    """Класс товаров - 'Газонная трава'"""
+
     country: str
     germination_period: str
     color: str
 
-    def __init__(self, name, description, price, quantity, country, germination_period, color):
-        """ Расширение родительского метода __init__ """
+    def __init__(
+        self, name, description, price, quantity, country, germination_period, color
+    ):
+        """Расширение родительского метода __init__"""
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period

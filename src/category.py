@@ -18,16 +18,16 @@ class Category:
         Category.product_count = len(self.__products)
 
     def __str__(self):
-        """ Магический метод строкового отображения для объекта класса 'Category' """
+        """Магический метод строкового отображения для объекта класса 'Category'"""
         total_quantity = 0
         for product in self.__products:
             total_quantity += product.quantity
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
     def add_product(self, product):
-        """ Метод добавления объекта класса "Товар" в приватный атрибут класса "Категория" - список товаров.
+        """Метод добавления объекта класса "Товар" в приватный атрибут класса "Категория" - список товаров.
         При попытке добавить товар, не являющийся объектом класса или подкласса 'Product' инициализируется
-         исключение <TypeError> """
+         исключение <TypeError>"""
         if not isinstance(product, Product):
             raise TypeError("Невозможно добавить товар в данный класс")
         self.__products.append(product)
@@ -35,7 +35,7 @@ class Category:
 
     @property
     def products(self):
-        """ Метод вывода данных, содержащихся в приватном атрибуте объекта класса "Категория" - списке товаров """
+        """Метод вывода данных, содержащихся в приватном атрибуте объекта класса "Категория" - списке товаров"""
         products_list = []
         for i in range(len(self.__products)):
             products_list.append(
