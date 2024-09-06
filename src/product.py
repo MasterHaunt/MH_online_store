@@ -1,5 +1,5 @@
 class Product:
-    """Класс товара"""
+    """Класс товара (общий)"""
 
     name: str
     description: str
@@ -27,7 +27,11 @@ class Product:
 
     def __add__(self, other):
         """Магический метод сложения для объекта класса 'Product':
-        складывается произведение количества товара на его стоимость"""
+        складывается произведение количества товара на его стоимость.
+        Если складываемые объекты не из одного класса (подкласса), инициализируется
+         исключение <TypeError>"""
+        if type(self) is not type(other):
+            raise TypeError("Нельзя суммировать товары из разных категорий!")
         return (self.quantity * self.price) + (other.quantity * other.price)
 
     @classmethod
@@ -67,3 +71,39 @@ class Product:
         else:
             self.__price = new_price
         return self.__price
+
+
+class Smartphone(Product):
+    """Класс товаров - 'Смартфоны'"""
+
+    efficiency: float
+    model: str
+    memory: int
+    color: str
+
+    def __init__(
+        self, name, description, price, quantity, efficiency, model, memory, color
+    ):
+        """Расширение родительского метода __init__"""
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    """Класс товаров - 'Газонная трава'"""
+
+    country: str
+    germination_period: str
+    color: str
+
+    def __init__(
+        self, name, description, price, quantity, country, germination_period, color
+    ):
+        """Расширение родительского метода __init__"""
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color

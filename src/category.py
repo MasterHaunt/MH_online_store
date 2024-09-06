@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 class Category:
     """Класс категории товаров"""
 
@@ -22,7 +25,11 @@ class Category:
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
     def add_product(self, product):
-        """Метод добавления объекта класса "Товар" в приватный атрибут класса "Категория" - список товаров"""
+        """Метод добавления объекта класса "Товар" в приватный атрибут класса "Категория" - список товаров.
+        При попытке добавить товар, не являющийся объектом класса или подкласса 'Product' инициализируется
+         исключение <TypeError>"""
+        if not isinstance(product, Product):
+            raise TypeError("Невозможно добавить товар в данный класс")
         self.__products.append(product)
         Category.product_count += 1
 

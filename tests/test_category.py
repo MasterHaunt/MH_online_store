@@ -11,9 +11,17 @@ def test_category_init(category_1):
 
 
 def test_category_add_product(category_1, product_2):
-    """Тестирование метода добавления объекта класса "Продукт" в объект класса "Категория" """
+    """Тестирование метода добавления объекта класса 'Product' в объект класса 'Category'"""
     category_1.add_product(product_2)
     assert category_1.product_count == 4
+
+
+def test_category_add_not_product(category_1):
+    """Тестирование выброса ошибки <TypeError> при попытке добавления объекта не из класса 'Product'
+    в объект класса 'Category'"""
+    with pytest.raises(TypeError):
+        category_1.add_product("Not product")
+    assert category_1.product_count == 3
 
 
 def test_category_str(category_1):
