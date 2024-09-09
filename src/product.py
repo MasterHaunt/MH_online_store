@@ -87,7 +87,7 @@ class Smartphone(Product):
     color: str
 
     def __init__(
-            self, name, description, price, quantity, efficiency, model, memory, color
+        self, name, description, price, quantity, efficiency, model, memory, color
     ):
         """Расширение родительского метода __init__"""
         super().__init__(name, description, price, quantity)
@@ -105,7 +105,7 @@ class LawnGrass(Product):
     color: str
 
     def __init__(
-            self, name, description, price, quantity, country, germination_period, color
+        self, name, description, price, quantity, country, germination_period, color
     ):
         """Расширение родительского метода __init__"""
         super().__init__(name, description, price, quantity)
