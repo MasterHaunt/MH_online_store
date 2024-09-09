@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.mixin_str import MixinStr
+
+
+class Product(BaseProduct, MixinStr):
     """Класс товара (общий)"""
 
     name: str
@@ -20,6 +24,7 @@ class Product:
                 "quantity": quantity,
             }
         )
+        super().__init__()
 
     def __str__(self):
         """Магический метод строкового отображения для объекта класса 'Product'"""
@@ -82,7 +87,7 @@ class Smartphone(Product):
     color: str
 
     def __init__(
-        self, name, description, price, quantity, efficiency, model, memory, color
+            self, name, description, price, quantity, efficiency, model, memory, color
     ):
         """Расширение родительского метода __init__"""
         super().__init__(name, description, price, quantity)
@@ -100,7 +105,7 @@ class LawnGrass(Product):
     color: str
 
     def __init__(
-        self, name, description, price, quantity, country, germination_period, color
+            self, name, description, price, quantity, country, germination_period, color
     ):
         """Расширение родительского метода __init__"""
         super().__init__(name, description, price, quantity)

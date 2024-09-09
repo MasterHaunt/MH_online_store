@@ -37,7 +37,7 @@ def test_product_null_price_setter(capsys, product_1):
     """Тестирование сеттера приватного атрибута класса 'Product' - цены, при установке нулевой цены"""
     product_1.price = 0.00
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
     assert product_1.price == 131.25
 
 
