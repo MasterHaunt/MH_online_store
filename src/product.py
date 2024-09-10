@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.mixin_str import MixinStr
+
+
+class Product(BaseProduct, MixinStr):
     """Класс товара (общий)"""
 
     name: str
@@ -20,6 +24,7 @@ class Product:
                 "quantity": quantity,
             }
         )
+        super().__init__()
 
     def __str__(self):
         """Магический метод строкового отображения для объекта класса 'Product'"""
