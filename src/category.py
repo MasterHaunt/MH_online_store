@@ -44,3 +44,13 @@ class Category:
                 f"Остаток: {self.__products[i].quantity} шт."
             )
         return products_list
+
+    def middle_price(self):
+        """ Метод определения средней цены товаров в категории. Если метод вызван у категории, в которой нет товаров,
+        то он возвращает значение "0" и выводит сообщение об ошибке """
+        avg_price = 0
+        try:
+            avg_price = sum([product.price for product in self.__products]) / self.product_count
+        except ZeroDivisionError:
+            print("В категории нет товаров, средняя цена = 0 ")
+        return avg_price
