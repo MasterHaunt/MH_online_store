@@ -16,7 +16,7 @@ class Product(BaseProduct, MixinStr):
         self.description = description
         self.__price = price
         if quantity <= 0:
-        # Если при создании экземпляра класса его количество нулевое или отрицательное - выбрасывается исключение
+            # Если при создании экземпляра класса его количество нулевое или отрицательное - выбрасывается исключение
             raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.quantity = quantity
         Product.products_list.append(

@@ -19,6 +19,15 @@ def category_1():
 
 
 @pytest.fixture
+def category_empty():
+    return Category(
+        name="Category empty",
+        description="Empty category",
+        products=[],
+    )
+
+
+@pytest.fixture
 def product_1():
     return Product("Product_1-1", "Product__1___1", 131.25, 100)
 
