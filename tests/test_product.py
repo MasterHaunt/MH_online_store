@@ -125,4 +125,5 @@ def test_zero_quantity_product(capsys):
             == "Товар с нулевым количеством не может быть добавлен"
         )
     except ValueError:
-        product_z = None
+        product_z = Product("Product_z", "Product_zero", 100, 1)
+    assert product_z.quantity == 1
