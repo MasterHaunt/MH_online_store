@@ -51,7 +51,7 @@ class Category:
         avg_price = 0
         try:
             avg_price = (
-                sum([product.price for product in self.__products]) / self.product_count
+                sum([product.price for product in self.__products]) / len(self.__products)
             )
         except ZeroDivisionError:
             print("В категории нет товаров, средняя цена = 0 ")
