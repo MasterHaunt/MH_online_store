@@ -38,3 +38,13 @@ def test_iterator(category_iterator):
     assert str(next(category_iterator)) == "Product_1-3, 115.96 руб. Остаток: 130 шт."
     with pytest.raises(StopIteration):
         next(category_iterator)
+
+
+def test_middle_price(category_1):
+    """Тестирование метода расчёта средней цены товаров в категории"""
+    assert category_1.middle_price() == 144.81333333333333
+
+
+def test_empty_middle_price(category_empty):
+    """Тестирование метода расчёта средней цены товаров в пустой категории"""
+    assert category_empty.middle_price() == 0

@@ -113,3 +113,17 @@ def test_str_lawn_grass(lawn_grass_1, lawn_grass_2):
     """Тестирование унаследованного от класса 'Product' метода строкового представления в классе 'LawnGrass'"""
     assert str(lawn_grass_1) == "Lawn grass 1, 1000.0 руб. Остаток: 100 шт."
     assert str(lawn_grass_2) == "Lawn grass 2, 2000.0 руб. Остаток: 200 шт."
+
+
+def test_zero_quantity_product(capsys):
+    """Тестирование создания объекта класса 'Product' с нулевым количеством"""
+    try:
+        product_z = Product("Product_z", "Product_zero", 100, 0)
+        message = capsys.readouterr()
+        assert (
+            message.out.strip().split("\n")[0]
+            == "Товар с нулевым количеством не может быть добавлен"
+        )
+    except ValueError:
+        product_z = Product("Product_z", "Product_zero", 100, 1)
+    assert product_z.quantity == 1
